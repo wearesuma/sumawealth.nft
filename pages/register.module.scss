@@ -1,0 +1,25 @@
+.row {
+  display: flex;
+  margin: auto 0;
+  width: 80%;
+  
+
+  .register {
+    width: 40%;
+  }
+
+  .login {
+    width: 60%;
+    background: white;
+    padding:  auto;
+  }
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  padding: 15vh 0;
+  background: url(/bg.jpeg);
+}
