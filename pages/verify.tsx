@@ -1,9 +1,17 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useEffect, useState } from "react";
 import { verify } from "../lib/api";
 
 export default function Verify() {
-  const s = JSON.parse(localStorage.getItem("verify"));
-  const { verificationToken, email } = s;
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("verify")));
+  }, []);
+
+  if (!data) return <p>Loading...</p>;
+
+  const { verificationToken, email } = data;
 
   return (<Formik initialValues={{ code: '' }} onSubmit={async (values, { setSubmitting }) => {
 
