@@ -13,10 +13,6 @@ const Layout = ({ title, children }) => {
     <div className={styles.container}>
       <Head>
         <title>{title}</title>
-        <link
-          href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700"
-          rel="stylesheet"
-        ></link>
       </Head>
       <div className={styles.content}>
         <Header />

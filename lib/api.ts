@@ -1,15 +1,39 @@
 import CryptoJS from "crypto-js";
 import axios from "axios";
+import { BehaviorSubject } from "rxjs";
+import Router from "next/router";
+
+const tokenSubject = new BehaviorSubject(typeof window !== "undefined" && localStorage.getItem("token"));
+const userSubject = new BehaviorSubject(typeof window !== "undefined" && JSON.parse(localStorage.getItem("user")));
+
+export const tokenService = {
+  token: tokenSubject.asObservable(),
+  get tokenValue() { return tokenSubject.value },
+
+  login,
+  logout,
+  register,
+  verify,
+  profile,
+  collections,
+  collectionTokens,
+}
+
+export const userService = {
+  user: userSubject.asObservable(),
+
+  get userValue() { return userSubject.value }
+}
+
 const base = "https://api.curios.com/v2/api/";
 
-function createSignature(endpoint: string, payload: any): string {
+function createSignature(date: Date, endpoint: string, payload: any): string {
   const hashed_payload = CryptoJS.SHA256(JSON.stringify(payload)).toString();
-  const date = new Date();
   const string_to_hash = `${date.toISOString()} ${endpoint} ${hashed_payload}`;
 
   const signature = CryptoJS.HmacSHA256(
     string_to_hash,
-    process.env.API_SECRET || ""
+    process.env.NEXT_PUBLIC_API_SECRET || ""
   );
 
   return signature.toString();
@@ -52,15 +76,15 @@ async function postCustomer(endpoint: string, payload: RegisterPayload | LoginPa
   const date = new Date();
   const response = await axios.post(`${base}customers/${endpoint}`, payload, {
     headers: {
-      "curios-api-key": process.env.API_KEY || "",
+      "curios-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
       "curios-date": date.toISOString(),
-      "curios-signature": createSignature(endpoint, payload),
+      "curios-signature": createSignature(date, `customers/${endpoint}`, payload),
     },
   });
   return response;
 }
 
-async function register(
+export async function register(
   email: string,
   password: string,
   first_name: string = "",
@@ -82,82 +106,119 @@ async function register(
     phone,
     display_name,
   };
-  return await postCustomer("register", payload);
+  return await postCustomer("register/", payload);
 }
 
-async function login(email: string, password: string): Promise<any> {
+export async function login(email: string, password: string): Promise<any> {
   const payload = { email, password };
-  return await postCustomer("login", payload);
+  const response = await postCustomer("login/", payload);
+  response.data.data.email = email;
+  localStorage.setItem("verify", JSON.stringify(response.data.data));
+  Router.push('/verify');
 }
 
-async function verify(
+export function logout() {
+  localStorage.removeItem("user");
+  tokenSubject.next(null);
+  Router.push('/register');
+}
+
+export async function verify(
   email: string,
   verificationToken: string,
   verificationCode: string
 ): Promise<any> {
   const payload = { email, verificationToken, verificationCode };
-  return await postCustomer("verify", payload);
+  const response = await postCustomer("verify/", payload);
+  const token = response.data?.data?.session_token;
+  tokenSubject.next(token);
+  localStorage.setItem("token", token);
+  Router.push("/profile");
 }
 
-async function resetPassword(email: string): Promise<any> {
+export async function resetPassword(email: string): Promise<any> {
   const payload = { email };
-  return await postCustomer("resetPassword", payload);
+  return await postCustomer("resetPassword/", payload);
 }
 
-async function resetPasswordComplete(
+export async function resetPasswordComplete(
   email: string,
   new_password: string,
   reset_code: string
 ): Promise<any> {
   const payload = { email, new_password, reset_code };
-  return await postCustomer("resetPasswordComplete", payload);
+  return await postCustomer("resetPasswordComplete/", payload);
 }
 
 async function getCustomer(endpoint: string, token: string): Promise<any> {
   const date = new Date();
   const response = await axios.get(`${base}customers/${endpoint}`, {
     headers: {
-      "curios-api-key": process.env.API_KEY || "",
+      "curios-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
       "curios-date": date.toISOString(),
-      "curios-signature": createSignature(endpoint, {}),
-      "Authorization": `Bearer ${token}`
-    }
+      "curios-signature": createSignature(date, `customers/${endpoint}`, {}),
+      "Authorization": `Bearer ${token}`,
+    },
+    data: {}
   });
 
   return response;
 }
 
-type Profile = {
-  email: string
+export type Profile = {
+  email: string,
+  first_name: string,
+  last_name: string,
+  display_name: string,
+  phone: string,
+  avatar: string,
+  account_balance: number,
+  max_bid_amount: number,
+  total_earned: number,
+  total_spent: number,
 }
 
-async function profile(token: string): Promise<Profile> {
-  const response = (await getCustomer("profile", token)).data;
-  return {
-    email: response.email
+export async function profile(token: string): Promise<Profile> {
+  const response = (await getCustomer("profile/", token)).data.data;
+  console.log(response);
+  const p = {
+    email: response.EMAIL,
+    first_name: response.FIRST_NAME,
+    last_name: response.LAST_NAME,
+    display_name: response.DISPLAY_NAME,
+    phone: response.PHONE,
+    avatar: response.AVATAR,
+    account_balance: response.ACCOUNT_BALANCE,
+    max_bid_amount: response.MAX_BID_AMOUNT,
+    total_earned: response.TOTAL_EARNED,
+    total_spent: response.TOTAL_EARNED
   };
+
+  userSubject.next(p);
+
+  return p;
 }
 
-type Collection = {}
+export type Collection = {}
 
-async function collections(token: string): Promise<Collection[]> {
-  const response = (await getCustomer("collections", token)).data;
+export async function collections(token: string): Promise<Collection[]> {
+  const response = (await getCustomer("collections/", token)).data;
   return [{}]
 }
 
-type Token = {}
+export type Token = {}
 
-async function collectionTokens(token: string, id: string): Promise<Token[]> {
+export async function collectionTokens(token: string, id: string): Promise<Token[]> {
   const response = (await getCustomer(`collections/${id}/tokens`, token)).data;
   return [{}]
 }
 
-async function tokens(token: string): Promise<Token[]> {
+export async function tokens(token: string): Promise<Token[]> {
   const response = (await getCustomer(`tokens`, token)).data;
   return [{}]
 }
 
-async function token(token: string, id: string): Promise<Token> {
+export async function token(token: string, id: string): Promise<Token> {
   const response = (await getCustomer(`tokens/${id}`, token)).data;
   return {}
 }

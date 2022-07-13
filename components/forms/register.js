@@ -1,5 +1,4 @@
 import styles from "./register.module.scss";
-import TextBox from "./textbox";
 import Checkbox from "./checkbox";
 import Link from "next/link";
 
@@ -12,20 +11,42 @@ const Register = ({ className }) => {
           <h4>Register to claim your NFT!</h4>
         </div>
         <form className={styles.form}>
-          <TextBox placeholder="First name" name="first_name" type="text" />
-          <TextBox placeholder="Last name" name="last_name" type="text" />
-          <TextBox placeholder="Email" name="email" type="email" />
-          <TextBox
+          <input
+            className={styles.textbox}
+            placeholder="First name"
+            name="first_name"
+            type="text"
+          />
+          <input
+            className={styles.textbox}
+            placeholder="Last name"
+            name="last_name"
+            type="text"
+          />
+          <input
+            className={styles.textbox}
+            placeholder="Email"
+            name="email"
+            type="email"
+          />
+          <input
+            className={styles.textbox}
             placeholder="Mobile Phone Number"
             name="phone_number"
             type="phone"
           />
-          <TextBox
+          <input
+            className={styles.textbox}
             placeholder="Public Display Name"
             name="display_name"
             type="text"
           />
-          <TextBox placeholder="Password" name="password" type="password" />
+          <input
+            className={styles.textbox}
+            placeholder="Password"
+            name="password"
+            type="password"
+          />
 
           <div className={styles.checkboxes}>
             <Checkbox
