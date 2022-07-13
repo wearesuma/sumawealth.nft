@@ -55,7 +55,7 @@ const Login = ({ className }) => {
           }}
         >
           {({ isSubmitting }) => (
-            <Form className={styles.form} method="post">
+            <Form className={styles.form}>
               <Field
                 className={styles.textbox}
                 name="email"

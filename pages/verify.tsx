@@ -7,11 +7,13 @@ export default function Verify() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    setData(JSON.parse(localStorage.getItem("verify")));
-    if (!data) {
+    const d = JSON.parse(localStorage.getItem("verify"));
+    if (!d) {
       Router.push("/register");
+    } else {
+      setData(d);
     }
-  }, [data]);
+  }, []);
 
   if (!data) return <p>Loading...</p>;
 
