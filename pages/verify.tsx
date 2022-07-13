@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import Router from "next/router";
 import { useEffect, useState } from "react";
 import { verify } from "../lib/api";
 
@@ -7,7 +8,10 @@ export default function Verify() {
 
   useEffect(() => {
     setData(JSON.parse(localStorage.getItem("verify")));
-  }, []);
+    if (!data) {
+      Router.push("/register");
+    }
+  }, [data]);
 
   if (!data) return <p>Loading...</p>;
 
