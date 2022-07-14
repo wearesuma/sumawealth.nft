@@ -22,6 +22,7 @@ export default function Verify() {
   return (<Formik initialValues={{ code: '' }} onSubmit={async (values, { setSubmitting }) => {
 
     verify(email, verificationToken, values.code);
+    setSubmitting(false);
   }}>
     {({ isSubmitting }) => (
       <Form method="post">

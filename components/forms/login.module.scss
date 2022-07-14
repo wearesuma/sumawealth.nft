@@ -1,7 +1,9 @@
+@import "../../styles/common";
+
 .container {
   text-align: center;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
 
   .heading {
@@ -26,12 +28,12 @@
   }
 
   a {
-    color: #4a6aad;
+    color: $our-blue;
   }
 
   .submit {
     color: white;
-    background: #dd5a57;
+    background: $our-red;
     padding: 15px 0;
     width: 50%;
     margin: 30px auto 0;
@@ -55,7 +57,7 @@
   display: flex;
   justify-content: center;
 
-  > * {
+  >* {
     margin: 0 25px;
   }
 }

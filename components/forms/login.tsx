@@ -35,8 +35,6 @@ const Login = ({ className }) => {
 
             if (!values.password) {
               errors.password = "Required";
-            } else if (values.password.length < 6) {
-              errors.password = "Password too small";
             } else {
               delete errors.password;
             }

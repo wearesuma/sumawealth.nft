@@ -1,10 +1,14 @@
+@import "../../styles/common";
+
 .container {
-  background-color: #4a6aad;
+  background-color: $our-blue;
   text-align: center;
   display: flex;
   flex-direction: column;
 
-  h1, h4, label {
+  h1,
+  h4,
+  label {
     color: white;
   }
 
@@ -30,7 +34,7 @@
   }
 
   a {
-    color: #fdf1c2;
+    color: $our-yellow;
   }
 }
 
@@ -42,6 +46,16 @@
 .form {
   display: flex;
   flex-direction: column;
+}
+
+.submit {
+  color: white;
+  padding: 13px 0;
+  width: 80%;
+  margin: 20px auto 20px;
+  border-radius: 77px;
+  font-weight: 700;
+  border: 2px solid white;
 }
 
 @import "forms";

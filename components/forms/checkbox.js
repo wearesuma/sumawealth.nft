@@ -1,3 +1,4 @@
+import { Field } from "formik";
 import { useState } from "react";
 import styles from "./checkbox.module.scss";
 
@@ -6,7 +7,7 @@ const Checkbox = ({ label, name, value }) => {
 
   return (
     <div className={styles.checkbox}>
-      <input
+      <Field
         type="checkbox"
         name={name}
         value={value}
@@ -17,6 +18,7 @@ const Checkbox = ({ label, name, value }) => {
       />
       <label
         htmlFor={name}
+        className={styles.label}
         onClick={(_) => {
           setChecked(!checked);
         }}
