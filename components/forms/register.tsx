@@ -24,7 +24,7 @@ const Register = ({ className }) => {
             marketing: false
           }}
           validate={values => {
-            const errors = {
+            let errors = {
               first_name: "",
               last_name: "",
               email: "",
@@ -114,35 +114,35 @@ const Register = ({ className }) => {
                 name="last_name"
                 type="text"
               />
-              <ErrorMessage name="first_name" component="div" className={styles.error} />
+              <ErrorMessage name="last_name" component="div" className={styles.error} />
               <Field
                 className={styles.textbox}
                 placeholder="Email"
                 name="email"
                 type="email"
               />
-              <ErrorMessage name="first_name" component="div" className={styles.error} />
+              <ErrorMessage name="email" component="div" className={styles.error} />
               <Field
                 className={styles.textbox}
                 placeholder="Mobile Phone Number"
                 name="phone_number"
                 type="phone"
               />
-              <ErrorMessage name="first_name" component="div" className={styles.error} />
+              <ErrorMessage name="phone" component="div" className={styles.error} />
               <Field
                 className={styles.textbox}
                 placeholder="Public Display Name"
                 name="display_name"
                 type="text"
               />
-              <ErrorMessage name="first_name" component="div" className={styles.error} />
+              <ErrorMessage name="display_name" component="div" className={styles.error} />
               <Field
                 className={styles.textbox}
                 placeholder="Password"
                 name="password"
                 type="password"
               />
-              <ErrorMessage name="first_name" component="div" className={styles.error} />
+              <ErrorMessage name="password" component="div" className={styles.error} />
 
               <div className={styles.checkboxes}>
                 <Checkbox
@@ -154,7 +154,7 @@ const Register = ({ className }) => {
                   name="terms"
                   value={1}
                 />
-                <ErrorMessage name="first_name" component="div" className={styles.error} />
+                <ErrorMessage name="terms" component="div" className={styles.error} />
                 <Checkbox
                   label={
                     <span>
@@ -164,7 +164,7 @@ const Register = ({ className }) => {
                   name="privacy"
                   value={1}
                 />
-                <ErrorMessage name="first_name" component="div" className={styles.error} />
+                <ErrorMessage name="privacy" component="div" className={styles.error} />
                 <Checkbox
                   label={<span>Add me to the marketing list</span>}
                   name="marketing"
