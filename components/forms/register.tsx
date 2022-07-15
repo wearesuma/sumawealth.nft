@@ -21,9 +21,9 @@ const Register = ({ className }) => {
             password: "",
             privacy: false,
             terms: false,
-            marketing: false
+            marketing: false,
           }}
-          validate={values => {
+          validate={(values) => {
             let errors = {
               first_name: "",
               last_name: "",
@@ -33,7 +33,7 @@ const Register = ({ className }) => {
               password: "",
               privacy: "",
               terms: "",
-              marketing: ""
+              marketing: "",
             };
 
             if (!values.first_name) {
@@ -50,7 +50,9 @@ const Register = ({ className }) => {
 
             if (!values.email) {
               errors.email = "Required";
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
               errors.email = "Invalid email address";
             } else {
               delete errors.email;
@@ -58,7 +60,11 @@ const Register = ({ className }) => {
 
             if (!values.phone) {
               errors.phone = "Required";
-            } else if (!/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/.test(values.phone)) {
+            } else if (
+              !/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/.test(
+                values.phone
+              )
+            ) {
               errors.phone = "Invalid phone number";
             } else {
               delete errors.phone;
@@ -72,8 +78,11 @@ const Register = ({ className }) => {
 
             if (!values.password) {
               errors.password = "Required";
-            } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(values.password)) {
-              errors.password = "Minimum eight characters, at least one letter and one number";
+            } else if (
+              !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(values.password)
+            ) {
+              errors.password =
+                "Minimum eight characters, at least one letter and one number";
             } else {
               delete errors.password;
             }
@@ -93,9 +102,28 @@ const Register = ({ className }) => {
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
-
-            const { first_name, last_name, email, display_name, password, phone, terms, privacy, marketing } = values;
-            const response = await register(email, password, first_name, last_name, terms, privacy, marketing, phone, display_name);
+            const {
+              first_name,
+              last_name,
+              email,
+              display_name,
+              password,
+              phone,
+              terms,
+              privacy,
+              marketing,
+            } = values;
+            const response = await register(
+              email,
+              password,
+              first_name,
+              last_name,
+              terms,
+              privacy,
+              marketing,
+              phone,
+              display_name
+            );
             setSubmitting(false);
           }}
         >
@@ -107,71 +135,113 @@ const Register = ({ className }) => {
                 name="first_name"
                 type="text"
               />
-              <ErrorMessage name="first_name" component="div" className={styles.error} />
+              <ErrorMessage
+                name="first_name"
+                component="div"
+                className={styles.error}
+              />
               <Field
                 className={styles.textbox}
                 placeholder="Last name"
                 name="last_name"
                 type="text"
               />
-              <ErrorMessage name="last_name" component="div" className={styles.error} />
+              <ErrorMessage
+                name="last_name"
+                component="div"
+                className={styles.error}
+              />
               <Field
                 className={styles.textbox}
                 placeholder="Email"
                 name="email"
                 type="email"
               />
-              <ErrorMessage name="email" component="div" className={styles.error} />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={styles.error}
+              />
               <Field
                 className={styles.textbox}
                 placeholder="Mobile Phone Number"
-                name="phone_number"
+                name="phone"
                 type="phone"
               />
-              <ErrorMessage name="phone" component="div" className={styles.error} />
+              <ErrorMessage
+                name="phone"
+                component="div"
+                className={styles.error}
+              />
               <Field
                 className={styles.textbox}
                 placeholder="Public Display Name"
                 name="display_name"
                 type="text"
               />
-              <ErrorMessage name="display_name" component="div" className={styles.error} />
+              <ErrorMessage
+                name="display_name"
+                component="div"
+                className={styles.error}
+              />
               <Field
                 className={styles.textbox}
                 placeholder="Password"
                 name="password"
                 type="password"
               />
-              <ErrorMessage name="password" component="div" className={styles.error} />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={styles.error}
+              />
 
               <div className={styles.checkboxes}>
                 <Checkbox
                   label={
                     <span>
-                      I agree to the <a href="/terms" target="_blank">Terms of Service</a>
+                      I agree to the{" "}
+                      <a href="/terms" target="_blank">
+                        Terms of Service
+                      </a>
                     </span>
                   }
                   name="terms"
                   value={1}
                 />
-                <ErrorMessage name="terms" component="div" className={styles.error} />
+                <ErrorMessage
+                  name="terms"
+                  component="div"
+                  className={styles.error}
+                />
                 <Checkbox
                   label={
                     <span>
-                      I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>
+                      I agree to the{" "}
+                      <a href="/privacy" target="_blank">
+                        Privacy Policy
+                      </a>
                     </span>
                   }
                   name="privacy"
                   value={1}
                 />
-                <ErrorMessage name="privacy" component="div" className={styles.error} />
+                <ErrorMessage
+                  name="privacy"
+                  component="div"
+                  className={styles.error}
+                />
                 <Checkbox
                   label={<span>Add me to the marketing list</span>}
                   name="marketing"
                   value={1}
                 />
               </div>
-              <button type="submit" disabled={isSubmitting} className={styles.submit}>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={styles.submit}
+              >
                 REGISTER
               </button>
             </Form>
