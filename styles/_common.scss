@@ -8,3 +8,97 @@ $text-title: #4fb1ca;
 $text-subtitle: #f3c146;
 $text-normal: $our-yellow;
 $text-dark: #26314a;
+
+// Media Queries
+// Extra Small Devices (less than 380px)
+@mixin mobileXs() {
+  @media only screen and (max-width: 379px) {
+    @content;
+  }
+}
+
+// Small Devices (less than 480px) 
+@mixin mobileSm() {
+  @media only screen and (max-width: 479px) {
+    @content;
+  }
+}
+
+// Medium Devices (less than 576px)
+@mixin mobileMd() {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+// Medium Devices (less than 768px)
+@mixin mobileLg() {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+// Medium Devices (less than 1025px)
+// @mixin tab() {
+//     @media only screen and (max-width:1024px) {
+//         @content;
+//     }
+// }
+
+// Medium Devices (less than 991px)
+@mixin tab() {
+  @media only screen and (max-width:991px) {
+    @content;
+  }
+}
+
+// Large Devices (less than 1400px)
+@mixin medium() {
+  @media only screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+// Extra Large Devices (More than 1400px)
+@mixin large() {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+// Custom Min Width
+@mixin customMin($min-width) {
+  @media only screen and (min-width: #{$min-width}px) {
+    @content;
+  }
+}
+
+// Custom Max Width
+@mixin customMax($max-width) {
+  @media only screen and (max-width: #{$max-width}px) {
+    @content;
+  }
+}
+
+// Custom Devices
+@mixin customMq($min-width, $max-width) {
+  @media only screen and (min-width: #{$min-width}px) and (max-width: #{$max-width}px) {
+    @content;
+  }
+}
+
+// IE
+@mixin IE {
+
+  @media screen and (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+//List
+%list-unstyled {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

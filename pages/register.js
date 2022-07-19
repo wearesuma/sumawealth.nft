@@ -1,6 +1,6 @@
 import Register from "../components/forms/register";
 import Login from "../components/forms/login";
-import Layout from "../components/layout";
+import Layout from "../components/layout/layout";
 
 import styles from "./register.module.scss";
 

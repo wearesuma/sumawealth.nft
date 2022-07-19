@@ -3,7 +3,12 @@ import styles from "./nftcard.module.scss";
 
 export default function NftCard({ src, alt, size = 400 }) {
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      style={{
+        width: "400px",
+      }}
+    >
       <Image
         src={src}
         alt={alt}
