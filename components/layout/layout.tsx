@@ -1,10 +1,7 @@
 import Head from "next/head";
 import styles from "./layout.module.scss";
 import Header from "./header";
-
-const Footer = () => {
-  return null;
-};
+import Footer from "./footer";
 
 const Layout = ({ title, children }) => {
   return (

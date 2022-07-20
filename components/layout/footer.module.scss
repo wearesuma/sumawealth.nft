@@ -1,0 +1,43 @@
+@import "../../styles/common";
+
+.footer {
+  background-color: $bg-dark;
+
+  .container {
+    margin: 0 auto;
+  }
+
+  .heading {
+    color: $text-subtitle;
+    font-weight: 700;
+    font-size: 2em;
+  }
+
+  .bottom {
+    background-color: $bg-darker;
+    color: #fff;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .row {
+    display: flex;
+
+    * {
+      margin-right: 15px
+    }
+  }
+
+  .list {
+    color: $text-normal;
+    font-weight: 300;
+  }
+
+  .sub {
+    color: $text-normal;
+    font-size: 1.5em;
+  }
+}
