@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import styles from "./header.module.scss";
 
 export default function Header() {
+  const [opened, setOpened] = useState(false);
+
   return (
     <header className={styles.header}>
       <div className={[styles.headerMain, styles.loveSticky].join(" ")}>
@@ -14,7 +17,17 @@ export default function Header() {
 
             <div className={styles.right}>
               <div className={styles.navWrapper}>
-                <div className={styles.navWrapperInner}>
+                <div
+                  id={styles.menuButton}
+                  onClick={(_) => setOpened(!opened)}
+                  className={opened && styles.menuOpened}
+                >
+                  <span></span>
+                </div>
+                <div
+                  className={styles.navWrapperInner}
+                  style={{ display: opened ? "block" : "none" }}
+                >
                   <ul className={styles.nav}>
                     <NavItem
                       title="Academy"
