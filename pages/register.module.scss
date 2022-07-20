@@ -1,8 +1,12 @@
+@import "../styles/common";
+
 .row {
   display: flex;
   margin: auto 0;
   width: 80%;
-  
+
+
+
 
   .register {
     width: 40%;
@@ -11,7 +15,20 @@
   .login {
     width: 60%;
     background: white;
-    padding:  auto;
+    padding: auto;
+  }
+
+  @include medium {
+    flex-direction: column;
+
+    .register {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+
+    .login {
+      width: 100%;
+    }
   }
 }
 
@@ -22,4 +39,8 @@
 
   padding: 15vh 0;
   background: url(/bg.jpeg);
+
+  @include medium {
+    padding-top: 150px;
+  }
 }

@@ -5,8 +5,8 @@ import styles from "./footer.module.scss";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.top}>
+      <div className={styles.top}>
+        <div className={styles.container}>
           <div className={styles.left}>
             <p className={styles.heading}>Join the Community</p>
             <div className={styles.row}>
@@ -60,7 +60,9 @@ export default function Footer() {
             <p className={styles.sub}>Visit Us!</p>
           </div>
         </div>
-        <div className={styles.bottom}>
+      </div>
+      <div className={styles.bottom}>
+        <div className={styles.container}>
           <p>
             &copy; {new Date().getFullYear()} Suma Wealth. All Rights Reserved.
           </p>
