@@ -20,13 +20,14 @@ export default function Header() {
                 <div
                   id={styles.menuButton}
                   onClick={(_) => setOpened(!opened)}
-                  className={opened && styles.menuOpened}
+                  className={opened ? styles.menuOpened : undefined}
                 >
                   <span></span>
                 </div>
                 <div
-                  className={styles.navWrapperInner}
-                  style={{ display: opened ? "block" : "none" }}
+                  className={`${styles.navWrapperInner} ${
+                    opened ? styles.opened : styles.closed
+                  }`}
                 >
                   <ul className={styles.nav}>
                     <NavItem
@@ -58,10 +59,21 @@ export default function Header() {
                     <NavItem
                       title="NFT Mercadito"
                       href="#"
-                      links={new Map<string, string>([["Coming soon...", "#"]])}
+                      links={new Map([["Coming soon...", "#"]])}
                     />
 
-                    <NavItem title="SUMA App" href="#" />
+                    <NavItem title="SUMA App" href="https://suma.land/app" />
+
+                    <NavItem
+                      title="SUMA FI"
+                      href="#"
+                      links={new Map([["Comming soon...", "#"]])}
+                    />
+                    <li className={styles.btnLi}>
+                      <button className={styles.btn}>
+                        <Link href="/register">Register / Login</Link>
+                      </button>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -100,11 +112,28 @@ function NavItem({
   href: string;
   links?: Map<string, string>;
 }) {
+  const [opened, setOpened] = useState(false);
+
   return (
-    <li className={links && styles.hasSubItem}>
+    <li
+      className={links ? styles.hasSubItem : undefined}
+      onClick={(_) => setOpened(!opened)}
+    >
+      {links && (
+        <span
+          className={
+            opened
+              ? `${styles.submenuButton} ${styles.submenuOpened}`
+              : styles.submenuButton
+          }
+        ></span>
+      )}
       <Link href={href}>{title}</Link>
       {links && (
-        <ul className={styles.subMenu}>
+        <ul
+          className={styles.subMenu}
+          style={{ display: opened ? "block" : "none" }}
+        >
           {Array.from(links.entries()).map(([key, value]) => (
             <li key={key}>
               {value.startsWith("http") ? (
