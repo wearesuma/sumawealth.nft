@@ -6,7 +6,7 @@ import styles from "./register.module.scss";
 
 const RegisterPage = () => {
   return (
-    <Layout>
+    <Layout title="Register">
       <div className={styles.content}>
         <div className={styles.row}>
           <Register className={styles.register} />
