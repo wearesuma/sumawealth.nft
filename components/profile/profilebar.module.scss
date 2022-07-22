@@ -1,0 +1,52 @@
+@import "../../styles/common";
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 130px;
+
+  display: flex;
+
+  .group {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    * {
+      margin-right: 25px;
+    }
+  }
+
+  .badge {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -115px;
+    text-align: center;
+
+    .username {
+      font-weight: 700;
+      color: $text-subtitle;
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+
+    .date {
+      color: #fff;
+      font-size: 0.9em;
+    }
+
+    .avatar {
+      border-radius: 50%;
+      background-color: $our-purple;
+    }
+  }
+
+}
+
+.bar {
+  border-bottom: 1px solid white;
+}
