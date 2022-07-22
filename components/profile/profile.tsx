@@ -15,7 +15,6 @@ export default function ProfilePage() {
   const token = tokenService.tokenValue;
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     setLoading(true);

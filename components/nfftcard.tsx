@@ -6,7 +6,8 @@ export default function NftCard({ src, alt, size = 400 }) {
     <div
       className={styles.card}
       style={{
-        width: "400px",
+        width: `${size}px`,
+        height: `${size}px`,
       }}
     >
       <Image

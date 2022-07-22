@@ -199,12 +199,39 @@ export async function profile(token: string): Promise<Profile> {
   return p;
 }
 
-export type Collection = {}
+export type Collection = {
+  collection_id: string,
+  description: string,
+  date_created: string,
+  mintage: string,
+  mintage_quantity: number,
+  num_tokens: number,
+  preview_audio: string,
+  preview_image: string,
+  preview_video: string,
+  subtitle: string,
+  title: string,
+  type: string,
+  type_id: number
+}
 
 export async function collections(token: string): Promise<Collection[]> {
-  const response = (await getCustomer("collections/", token)).data;
-  console.log(response);
-  return [{}]
+  const response: any[] = (await getCustomer("collections/", token)).data.data;
+  return response.map(i => ({
+    collection_id: i.COLLECTION_ID,
+    description: i.DESCRIPTION,
+    date_created: i.DTS_CREATED,
+    mintage: i.MINTAGE,
+    mintage_quantity: i.MINTAGE_QTY,
+    num_tokens: i.NUM_TOKENS,
+    preview_audio: i.PREVIEW_AUDIO,
+    preview_image: i.PREVIEW_IMAGE,
+    preview_video: i.PREVIEW_VIDEO,
+    subtitle: i.SUBTITLE,
+    title: i.TITLE,
+    type: i.TYPE,
+    type_id: i.TYPE_ID
+  }));
 }
 
 export type Token = {}

@@ -1,0 +1,40 @@
+@import "./profile";
+
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+
+  .content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  .btns {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+
+    >* {
+      margin-right: 15px;
+    }
+  }
+
+  .dropdown {
+    background-color: $text-title;
+  }
+
+  .active {
+    background-color: $btn-click;
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 50px;
+
+  }
+
+
+}
