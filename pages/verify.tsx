@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Layout from "../components/layout/layout";
 import { verify } from "../lib/api";
 
+import styles from "./verify.module.scss";
+
 export default function Verify() {
   const [data, setData] = useState(null);
 
@@ -19,7 +21,7 @@ export default function Verify() {
   let child = null;
 
   if (!data) {
-    child = <p>Loading...</p>;
+    child = <p className={styles.loading}>Loading...</p>;
   } else {
     const { verificationToken, email } = data;
     child = (
@@ -31,15 +33,24 @@ export default function Verify() {
         }}
       >
         {({ isSubmitting }) => (
-          <Form method="post">
+          <Form method="post" className={styles.form}>
             <Field
               name="code"
               type="text"
               placeholder="Enter verification code"
+              className={styles.textbox}
             />
-            <ErrorMessage name="password" component="div" />
+            <ErrorMessage
+              name="password"
+              component="div"
+              className={styles.error}
+            />
 
-            <button type="submit" disabled={isSubmitting}>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={styles.submit}
+            >
               LOGIN
             </button>
           </Form>
@@ -48,5 +59,13 @@ export default function Verify() {
     );
   }
 
-  return <Layout title="Verify Login">{child}</Layout>;
+  return (
+    <Layout title="Verify Login">
+      <div className={styles.container}>
+        <h1 className={styles.heading}>Verify your login</h1>
+        <h2 className={styles.sub}>Enter the code sent to you by email</h2>
+        {child}
+      </div>
+    </Layout>
+  );
 }
