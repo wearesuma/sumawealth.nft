@@ -2,6 +2,13 @@ import styles from "./profilebar.module.scss";
 import Image from "next/image";
 import { Profile } from "../../lib/api";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faShareNodes,
+  faEllipsis,
+  faE,
+} from "@fortawesome/free-solid-svg-icons";
+
 export default function ProfileBar({ user }: { user: Profile }) {
   return (
     <div className={styles.bar}>
@@ -24,10 +31,19 @@ export default function ProfileBar({ user }: { user: Profile }) {
         </div>
 
         <div className={styles.group}>
-          <input type="text" />
-          <button className={styles.share}>Share</button>
-          <button className={styles.follow}>follow</button>
-          <button className={styles.more}>More</button>
+          <input
+            type="text"
+            className={styles.input}
+            disabled
+            value={user.email}
+          />
+          <button className={styles.icon}>
+            <FontAwesomeIcon icon={faShareNodes} />
+          </button>
+          <button className={styles.btn}>follow</button>
+          <button className={styles.icon}>
+            <FontAwesomeIcon icon={faEllipsis} />
+          </button>
         </div>
       </div>
     </div>

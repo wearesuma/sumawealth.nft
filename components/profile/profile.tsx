@@ -9,11 +9,13 @@ import {
   userService,
 } from "../../lib/api";
 import { useEffect, useState } from "react";
+import Badges from "./badges";
 
 export default function ProfilePage() {
   const token = tokenService.tokenValue;
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -40,6 +42,9 @@ export default function ProfilePage() {
           />
         </div>
         <ProfileBar user={profile} />
+        <div className={styles.badges}>
+          <Badges token={token} />
+        </div>
       </div>
     );
   }

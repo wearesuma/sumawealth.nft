@@ -203,6 +203,7 @@ export type Collection = {}
 
 export async function collections(token: string): Promise<Collection[]> {
   const response = (await getCustomer("collections/", token)).data;
+  console.log(response);
   return [{}]
 }
 

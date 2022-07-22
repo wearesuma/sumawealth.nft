@@ -1,4 +1,4 @@
-@import "../../styles/common";
+@import "../../styles/common", "./profile";
 
 .container {
   width: 90%;
@@ -15,9 +15,26 @@
     align-items: center;
     justify-content: flex-end;
 
-    * {
-      margin-right: 25px;
+    >* {
+      margin-right: 10px;
     }
+
+
+    .icon {
+      background-color: $text-title;
+      color: white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+    }
+
+
+
+    .input {
+      width: 230px;
+    }
+
+
   }
 
   .badge {
