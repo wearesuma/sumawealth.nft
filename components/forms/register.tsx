@@ -1,7 +1,7 @@
 import styles from "./register.module.scss";
 import Checkbox from "./checkbox";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { register } from "../../lib/api";
+import { login, register } from "../../lib/api";
 
 const Register = ({ className }) => {
   return (
@@ -33,7 +33,6 @@ const Register = ({ className }) => {
               password: "",
               privacy: "",
               terms: "",
-              marketing: "",
             };
 
             if (!values.first_name) {
@@ -61,7 +60,7 @@ const Register = ({ className }) => {
             if (!values.phone) {
               errors.phone = "Required";
             } else if (
-              !/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/.test(
+              !/^(\([0-9]{3}\) |[0-9]{3}-?)[0-9]{3}-?[0-9]{4}$/.test(
                 values.phone
               )
             ) {
@@ -79,7 +78,9 @@ const Register = ({ className }) => {
             if (!values.password) {
               errors.password = "Required";
             } else if (
-              !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(values.password)
+              !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{8,}$/.test(
+                values.password
+              )
             ) {
               errors.password =
                 "Minimum eight characters, at least one letter and one number";
@@ -99,6 +100,8 @@ const Register = ({ className }) => {
               delete errors.terms;
             }
 
+            console.log(values.privacy, values.terms, errors);
+
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
@@ -113,17 +116,25 @@ const Register = ({ className }) => {
               privacy,
               marketing,
             } = values;
-            const response = await register(
-              email,
-              password,
-              first_name,
-              last_name,
-              terms,
-              privacy,
-              marketing,
-              phone,
-              display_name
-            );
+            try {
+              const rResponse = await register(
+                email,
+                password,
+                first_name,
+                last_name,
+                terms,
+                privacy,
+                marketing,
+                phone,
+                display_name
+              );
+              console.log(rResponse);
+              const lResponse = await login(email, password);
+              console.log(lResponse);
+            } catch (err) {
+              console.error(err);
+            }
+
             setSubmitting(false);
           }}
         >
@@ -164,7 +175,7 @@ const Register = ({ className }) => {
               />
               <Field
                 className={styles.textbox}
-                placeholder="Mobile Phone Number"
+                placeholder="Phone Number (XXX) XXX-XXX"
                 name="phone"
                 type="phone"
               />
@@ -196,7 +207,7 @@ const Register = ({ className }) => {
                 className={styles.error}
               />
 
-              <div className={styles.checkboxes}>
+              <div className={styles.checkboxes} role="group">
                 <Checkbox
                   label={
                     <span>
@@ -207,7 +218,6 @@ const Register = ({ className }) => {
                     </span>
                   }
                   name="terms"
-                  value={1}
                 />
                 <ErrorMessage
                   name="terms"
@@ -224,7 +234,6 @@ const Register = ({ className }) => {
                     </span>
                   }
                   name="privacy"
-                  value={1}
                 />
                 <ErrorMessage
                   name="privacy"
@@ -232,9 +241,8 @@ const Register = ({ className }) => {
                   className={styles.error}
                 />
                 <Checkbox
-                  label={<span>Add me to the marketing list</span>}
+                  label="Add me to the marketing list"
                   name="marketing"
-                  value={1}
                 />
               </div>
               <button

@@ -1,4 +1,3 @@
-
 import styles from "./login.module.scss";
 import Checkbox from "./checkbox";
 
@@ -59,10 +58,13 @@ const Login = ({ className }) => {
                 name="email"
                 type="email"
                 placeholder="Email..."
-
                 style={{ borderColor: "#ddd" }}
               />
-              <ErrorMessage name="email" component="div" className={styles.error} />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={styles.error}
+              />
 
               <Field
                 className={styles.textbox}
@@ -71,18 +73,22 @@ const Login = ({ className }) => {
                 placeholder="Password..."
                 style={{ borderColor: "#ddd" }}
               />
-              <ErrorMessage name="password" component="div" className={styles.error} />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={styles.error}
+              />
 
               <div className={styles.row}>
                 <a href="#reset">Reset Password</a>
-                <Checkbox
-                  label={<span>Remember me</span>}
-                  name="remember_me"
-                  value={1}
-                />
+                <Checkbox label={<span>Remember me</span>} name="remember_me" />
               </div>
 
-              <button type="submit" className={styles.submit} disabled={isSubmitting}>
+              <button
+                type="submit"
+                className={styles.submit}
+                disabled={isSubmitting}
+              >
                 LOGIN
               </button>
             </Form>
