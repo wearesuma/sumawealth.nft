@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { Collection, collections } from "../../lib/api";
+import { UserCollection, collections } from "../../lib/api";
 import NftCard from "../nfftcard";
 
 import styles from "./badges.module.scss";
@@ -32,7 +32,7 @@ export default function Badges({ token }: { token: string }) {
     child = (
       <div className={styles.grid}>
         {data[Object.keys(data)[activeI]]
-          .filter((c: Collection) => {
+          .filter((c: UserCollection) => {
             let t = searchText.toLowerCase();
 
             return (
@@ -41,11 +41,12 @@ export default function Badges({ token }: { token: string }) {
               c.subtitle.toLowerCase().includes(t)
             );
           })
-          .map((c: Collection) => (
+          .map((c: UserCollection) => (
             <NftCard
               src={c.preview_image}
               alt={c.title}
               key={c.collection_id}
+              id={c.collection_id}
               size={300}
             />
           ))}

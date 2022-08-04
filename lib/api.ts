@@ -199,7 +199,7 @@ export async function profile(token: string): Promise<Profile> {
   return p;
 }
 
-export type Collection = {
+export type UserCollection = {
   collection_id: string,
   description: string,
   date_created: string,
@@ -215,7 +215,7 @@ export type Collection = {
   type_id: number
 }
 
-export async function collections(token: string): Promise<Collection[]> {
+export async function collections(token: string): Promise<UserCollection[]> {
   const response: any[] = (await getCustomer("collections/", token)).data.data;
   return response.map(i => ({
     collection_id: i.COLLECTION_ID,
@@ -233,6 +233,63 @@ export async function collections(token: string): Promise<Collection[]> {
     type_id: i.TYPE_ID
   }));
 }
+
+export type Collection = {
+  audio: string,
+  creator: number,
+  description: string,
+  dateCreated: string,
+  dateModified: string,
+  hash: string,
+  image: string,
+  mintage: string,
+  mintageQty: number,
+  slug: string,
+  title: string,
+  subtitle: string,
+  type: number,
+  video: string,
+  sortOrder: number
+}
+
+export async function allCollections(id?: string): Promise<Collection[]> {
+  const date = new Date();
+  const endpoint = `collections/${id ? `${id}/` : ""}`;
+  const response: any[] | any = (await axios.get(`${base}${endpoint}`, {
+    headers: {
+      "curios-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
+      "curios-date": date.toISOString(),
+      "curios-signature": createSignature(date, endpoint, {}),
+    },
+    data: {}
+  })).data.data;
+
+  console.log(response);
+
+  const conv = i => ({
+    audio: i.AUDIO || i.PREVIEW_AUDIO,
+    description: i.DESCRIPTION,
+    dateCreated: i.DTS_CREATED,
+    mintage: i.MINTAGE,
+    mintageQty: i.MINTAGE_QTY,
+    subtitle: i.SUBTITLE,
+    title: i.TITLE,
+    type: i.TYPE || i.TYPE_ID,
+    creator: i.CREATOR || i.CREATOR_ID,
+    dateModified: i.DTS_MODIFIED,
+    hash: i.HASH,
+    image: i.IMAGE || i.PREVIEW_IMAGE,
+    video: i.VIDEO || i.PREVIEW_VIDEO,
+    slug: i.SLUG || '/404',
+    sortOrder: i.SORT_ORDER
+  });
+
+  const r = (id ? response.RESULTS : response).map(conv);
+  console.log(r);
+
+  return r;
+}
+
 
 export type Token = {}
 
