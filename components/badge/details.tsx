@@ -15,7 +15,7 @@ export default function Details({ badge }: { badge: Collection }) {
       <h1>{badge.title} Badge</h1>
       <h2>{badge.subtitle}</h2>
       <div className={styles.sub}>
-        <h3>Available {badge.mintageQty}</h3>
+        <h3>Available {badge.mintageQty || "Openly"}</h3>
         <button className={[styles.btn, styles.follow].join(" ")}>
           15K <FontAwesomeIcon icon={faHeart} />
         </button>
