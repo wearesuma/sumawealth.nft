@@ -1,8 +1,7 @@
 @import "../../styles/common";
 
 .container {
-  background: $bg-dark;
-  background: linear-gradient(45deg, $bg-darker 0%, $our-blue 100%);
+  @extend %bg-grad;
 }
 
 .badges {
