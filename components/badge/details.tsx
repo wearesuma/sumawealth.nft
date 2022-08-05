@@ -13,10 +13,9 @@ export default function Details({ badge }: { badge: Collection }) {
   return (
     <div className={styles.details}>
       <h1>{badge.title} Badge</h1>
+      <h2>{badge.subtitle}</h2>
       <div className={styles.sub}>
-        <h2>{badge.subtitle}</h2>
-        <span>|</span>
-        <h2>Available {badge.mintageQty}</h2>
+        <h3>Available {badge.mintageQty}</h3>
         <button className={[styles.btn, styles.follow].join(" ")}>
           15K <FontAwesomeIcon icon={faHeart} />
         </button>
@@ -30,11 +29,11 @@ export default function Details({ badge }: { badge: Collection }) {
       </div>
 
       <div className={styles.wrapper}>
-        <h3 className={styles.selected}>Info</h3>
+        <h4 className={styles.selected}>Info</h4>
       </div>
-      <h4>NFT ID</h4>
+      <h5>NFT ID</h5>
       <p className={styles.focus}>{badge.hash}</p>
-      <h4>Mintage</h4>
+      <h5>Mintage</h5>
       <p className={styles.focus}>{badge.mintage}</p>
     </div>
   );
