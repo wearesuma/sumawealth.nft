@@ -10,6 +10,8 @@ import {
 } from "../../lib/api";
 import { useEffect, useState } from "react";
 import Badges from "./badges";
+import Router from "next/router";
+import { CircleLoader } from "react-spinners";
 
 export default function ProfilePage() {
   const token = tokenService.tokenValue;
@@ -18,16 +20,24 @@ export default function ProfilePage() {
 
   useEffect(() => {
     setLoading(true);
-    getProfile(token).then((data) => {
-      setProfile(data);
-      setLoading(false);
-    });
+    getProfile(token)
+      .then((data) => {
+        setProfile(data);
+        setLoading(false);
+      })
+      .catch((_) => {
+        Router.push("/register");
+      });
   }, [token]);
 
   let child;
 
   if (loading) {
-    child = <div className={styles.spinner} />;
+    child = (
+      <div className={styles.spinner}>
+        <CircleLoader color="white" size={130} />
+      </div>
+    );
   } else {
     child = (
       <div className={styles.container}>
@@ -48,5 +58,5 @@ export default function ProfilePage() {
     );
   }
 
-  return <div className={styles.container}>{child}</div>;
+  return child;
 }
