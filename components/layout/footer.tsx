@@ -39,7 +39,7 @@ export default function Footer() {
                 <Link href="/profile">Profile</Link>
               </li>
               <li>
-                <Link href="/badges">All Badges</Link>
+                <Link href="/all-badges">All Badges</Link>
               </li>
               <li>
                 <Link href="/terms">Terms of Service</Link>
