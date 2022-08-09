@@ -1,0 +1,19 @@
+@import "../components/components";
+
+.container {
+  @extend %bg-grad;
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+
+  padding-bottom: 100px;
+}
+
+.content {
+  width: 90%;
+  margin: 200px auto 0;
+}

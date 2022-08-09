@@ -265,19 +265,19 @@ export async function allCollections(id?: string): Promise<Collection[]> {
 
 
   const conv = i => ({
-    audio: i.AUDIO || i.PREVIEW_AUDIO,
+    audio: i.AUDIO || i.PREVIEW_AUDIO || null,
     description: i.DESCRIPTION,
     dateCreated: i.DTS_CREATED,
     mintage: i.MINTAGE,
     mintageQty: i.MINTAGE_QTY,
     subtitle: i.SUBTITLE,
     title: i.TITLE,
-    type: i.TYPE || i.TYPE_ID,
-    creator: i.CREATOR || i.CREATOR_ID,
+    type: i.TYPE || i.TYPE_ID || null,
+    creator: i.CREATOR || i.CREATOR_ID || null,
     dateModified: i.DTS_MODIFIED,
     hash: i.HASH,
-    image: i.IMAGE || i.PREVIEW_IMAGE,
-    video: i.VIDEO || i.PREVIEW_VIDEO,
+    image: i.IMAGE || i.PREVIEW_IMAGE || null,
+    video: i.VIDEO || i.PREVIEW_VIDEO || null,
     slug: i.SLUG || '/404',
     sortOrder: i.SORT_ORDER
   });
