@@ -180,7 +180,6 @@ export type Profile = {
 
 export async function profile(token: string): Promise<Profile> {
   const response = (await getCustomer("profile/", token)).data.data;
-  console.log(response);
   const p = {
     email: response.EMAIL,
     first_name: response.FIRST_NAME,
@@ -264,7 +263,6 @@ export async function allCollections(id?: string): Promise<Collection[]> {
     data: {}
   })).data.data;
 
-  console.log(response);
 
   const conv = i => ({
     audio: i.AUDIO || i.PREVIEW_AUDIO,
@@ -285,7 +283,6 @@ export async function allCollections(id?: string): Promise<Collection[]> {
   });
 
   const r = (id ? response.RESULTS : response).map(conv);
-  console.log(r);
 
   return r;
 }

@@ -1,0 +1,203 @@
+{
+  "BUDGET": {
+    "playlist": "https://suma.land/YTBudgetMaster",
+    "badges": {
+      "Familia Forever": {
+        "quiz": "https://suma.land/budgetchallenge1",
+        "video": "GEciE96z7lo"
+      },
+      "Budgeteer": {
+        "quiz": "https://suma.land/budgetchallenge2",
+        "video": "6c4zGNpnnYA"
+      },
+      "Rock n' Budget": {
+        "quiz": "https://suma.land/budgetchallenge3",
+        "video": "cAZ3lJa2_GI"
+      },
+      "Budget Analyzer": {
+        "quiz": "https://suma.land/budgetchallenge4",
+        "video": "2huYnnWqz6s"
+      },
+      "Myth Crusher": {
+        "quiz": "https://suma.land/budgetchallenge5",
+        "video": "VT67_JBU51o"
+      },
+      "Prime Budgeteer": {
+        "quiz": "https://suma.land/budgetchallenge6",
+        "video": "9K80glN-8Ag"
+      },
+      "Toolster": {
+        "quiz": "https://suma.land/budgetchallenge7",
+        "video": "8uspUXD1clc"
+      },
+      "Budget Revamper": {
+        "quiz": "https://suma.land/budgetchallenge8",
+        "video": "fvV9m0giVXk"
+      }
+    }
+  },
+  "CREDIT": {
+    "playlist": "https://suma.land/YTCreditMaster",
+    "badges": {
+      "The Aha": {
+        "quiz": "https://suma.land/creditchallenge1",
+        "video": "qIc-ldPkbww"
+      },
+      "Credit Cardinal": {
+        "quiz": "https://suma.land/creditchallenge2",
+        "video": "lsvBB521igs"
+      },
+      "Credit Score Magician": {
+        "quiz": "https://suma.land/creditchallenge3",
+        "video": "fiJtptoPvl0"
+      },
+      "Score Saver": {
+        "quiz": "https://suma.land/creditchallenge4",
+        "video": "crwdrar72L8"
+      },
+      "Ojo de Credit": {
+        "quiz": "https://suma.land/creditchallenge5",
+        "video": "H5sLt11QkjU"
+      },
+      "No Más Lies": {
+        "quiz": "https://suma.land/creditchallenge6",
+        "video": "mfA1JA0uhrg"
+      },
+      "Securit-key": {
+        "quiz": "https://suma.land/creditchallenge7",
+        "video": "TuvUhJTf0Hg"
+      },
+      "The Checker": {
+        "quiz": "https://suma.land/creditchallenge8",
+        "video": "-o-OH7qrBJE"
+      }
+    }
+  },
+  "SAVINGS": {
+    "playlist": "https://suma.land/YTSavingsMaster",
+    "badges": {
+      "$tar $aver": {
+        "quiz": "https://suma.land/savingschallenge1",
+        "video": "oH3c4kRyGIs"
+      },
+      "Futuristico": {
+        "quiz": "https://suma.land/savingschallenge2",
+        "video": "zV2zKanNvf"
+      },
+      "Penny Saver": {
+        "quiz": "https://suma.land/savingschallenge3",
+        "video": "8bsgDV_EsS4"
+      },
+      "Money Magnifico": {
+        "quiz": "https://suma.land/savingschallenge4",
+        "video": "rfUejk0KchA"
+      }
+    }
+  },
+  "DEBT FREE": {
+    "playlist": "https://suma.land/YTDebtfreeMaster",
+    "badges": {
+      "The Big Pay Off": {
+        "quiz": "https://suma.land/debtfreechallenge1",
+        "video": "JGXElSLWLDg"
+      },
+      "Debt Blaster": {
+        "quiz": "https://suma.land/debtfreechallenge2",
+        "video": "Do-EsIUdL_Y"
+      },
+      "Dinero Motivator": {
+        "quiz": "https://suma.land/debtfreechallenge3",
+        "video": "ByOyngArs1c"
+      },
+      "Amig@ Help": {
+        "quiz": "https://suma.land/debtfreechallenge4",
+        "video": "jdEpwHL7_Qw"
+      }
+    }
+  },
+  "INVEST & RETIRE": {
+    "playlist": "https://suma.land/YTInvestMaster",
+    "badges": {
+      "Stepmaster": {
+        "quiz": "https://suma.land/InvestRetireChallenge1",
+        "video": "9n1VckAtXk0"
+      },
+      "Coin Op": {
+        "quiz": "https://suma.land/investretirechallenge2",
+        "video": "R4creTq4GpM"
+      },
+      "Time Bandit": {
+        "quiz": "https://suma.land/investretirechallenge3",
+        "video": "aQOuodOKlq"
+      },
+      "Pension Checker": {
+        "quiz": "https://suma.land/investretirechallenge4",
+        "video": "LxjK9eNJVHs"
+      },
+      "Hustler": {
+        "quiz": "https://suma.land/investretirechallenge5",
+        "video": "P6yg1U15bmg"
+      },
+      "$$ Life": {
+        "quiz": "https://suma.land/investretirechallenge6",
+        "video": "SlKWxC_AdyQ"
+      }
+    }
+  },
+  "FINANCIAL LITERACY": {
+    "playlist": "https://suma.land/YTFinanceMaster",
+    "badges": {
+      "Guac-tastico": {
+        "quiz": "https://suma.land/fliteracychallenge1",
+        "video": "LJ9fxqDowsA"
+      },
+      "Chef's Kiss": {
+        "quiz": "https://suma.land/fliteracychallenge2",
+        "video": "_ZJF4GfOamk"
+      },
+      "El car-nal": {
+        "quiz": "https://suma.land/fliteracychallenge3",
+        "video": "GQinp4TLfgA"
+      },
+      "Learn To Earn": {
+        "quiz": "https://suma.land/fliteracychallenge4",
+        "video": "4jt0vNxMtKc"
+      },
+      "Cha-ching": {
+        "quiz": "https://suma.land/fliteracychallenge5",
+        "video": "kFXQmMrC_p4"
+      },
+      "Money Helper": {
+        "quiz": "https://suma.land/fliteracychallenge6",
+        "video": "YnD5Z_AOR5M"
+      }
+    }
+  },
+  "FOUNDERS": {
+    "playlist": null,
+    "badges": {
+      "Founders": {
+        "quiz": null,
+        "video": null
+      }
+    }
+  },
+  "MONEY CAFECITO": {
+    "playlist": null,
+    "badges": {
+      "Money Cafecito": {
+        "quiz": null,
+        "video": null
+      }
+    }
+  },
+  "PROJECT CREATION": {
+    "playlist": null,
+    "badges": {
+      "NFT Project Creation": {
+        "quiz": null,
+        "video": null
+      }
+    }
+  }
+}

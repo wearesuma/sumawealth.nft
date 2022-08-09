@@ -7,7 +7,7 @@ module.exports = {
       {
         source: "/",
         destination: "/register",
-        permanent: true,
+        permanent: false,
       },
     ];
   },
